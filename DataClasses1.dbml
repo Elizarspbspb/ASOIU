@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ASOIU_4lr_1" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(local)\SQLEXPRESS;Initial Catalog=ASOIU_4lr_1;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ASOIU_4lr_1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Апартаменты" Member="Апартаменты">
+    <Type Name="Апартаменты">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Цена" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Площадь" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Этаж" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Адрес" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Картинки" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Застройщик" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Тип апартаментов]" Member="Тип_апартаментов" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Апартаменты_Корзина" Member="Корзина" ThisKey="ID" OtherKey="Код_апартаментов" Type="Корзина" />
+      <Association Name="Апартаменты_Сделка" Member="Сделка" ThisKey="ID" OtherKey="Номер_апартаментов" Type="Сделка" />
+      <Association Name="Застройщик_Апартаменты" Member="Застройщик1" ThisKey="Застройщик" OtherKey="ID" Type="Застройщик" IsForeignKey="true" />
+      <Association Name="Тип_апартаментов_Апартаменты" Member="Тип_апартаментов1" ThisKey="Тип_апартаментов" OtherKey="ID" Type="Тип_апартаментов" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Застройщик" Member="Застройщик">
+    <Type Name="Застройщик">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Название" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Описание" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="[Дата создания]" Member="Дата_создания" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Логотип" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Застройщик_Апартаменты" Member="Апартаменты" ThisKey="ID" OtherKey="Застройщик" Type="Апартаменты" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Корзина" Member="Корзина">
+    <Type Name="Корзина">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="[Код апартаментов]" Member="Код_апартаментов" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Код покупателя]" Member="Код_покупателя" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Апартаменты_Корзина" Member="Апартаменты" ThisKey="Код_апартаментов" OtherKey="ID" Type="Апартаменты" IsForeignKey="true" />
+      <Association Name="Покупатель_Корзина" Member="Покупатель" ThisKey="Код_покупателя" OtherKey="ID" Type="Покупатель" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Сделка" Member="Сделка">
+    <Type Name="Сделка">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="[Номер покупателя]" Member="Номер_покупателя" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Номер апартаментов]" Member="Номер_апартаментов" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Номер сотрудника]" Member="Номер_сотрудника" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Апартаменты_Сделка" Member="Апартаменты" ThisKey="Номер_апартаментов" OtherKey="ID" Type="Апартаменты" IsForeignKey="true" />
+      <Association Name="Покупатель_Сделка" Member="Покупатель" ThisKey="Номер_покупателя" OtherKey="ID" Type="Покупатель" IsForeignKey="true" />
+      <Association Name="Сотрудники_Сделка" Member="Сотрудники" ThisKey="Номер_сотрудника" OtherKey="ID" Type="Сотрудники" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Тип апартаментов]" Member="Тип_апартаментов">
+    <Type Name="Тип_апартаментов">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Название" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Тип_апартаментов_Апартаменты" Member="Апартаменты" ThisKey="ID" OtherKey="Тип_апартаментов" Type="Апартаменты" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Покупатель" Member="Покупатель">
+    <Type Name="Покупатель">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Имя" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Фамилия" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Отчество" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Паспорт" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Телефон" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Почта" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[Карты Привилегия]" Member="Карты_Привилегия" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Логин" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Хеш_пароля" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Покупатель_Корзина" Member="Корзина" ThisKey="ID" OtherKey="Код_покупателя" Type="Корзина" />
+      <Association Name="Покупатель_Сделка" Member="Сделка" ThisKey="ID" OtherKey="Номер_покупателя" Type="Сделка" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Сотрудники" Member="Сотрудники">
+    <Type Name="Сотрудники">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Имя" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Фамилия" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Должность" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Пароль" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Логин" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Хеш_пароля" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Сотрудники_Сделка" Member="Сделка" ThisKey="ID" OtherKey="Номер_сотрудника" Type="Сделка" />
+    </Type>
+  </Table>
+</Database>

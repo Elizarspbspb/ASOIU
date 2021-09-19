@@ -1,0 +1,156 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="ASOIU_Test1.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+        .auto-style2 {
+            height: 866px;
+        }
+        .auto-style3 {
+            height: 164px;
+            width: 20%;
+        }
+        .auto-style4 {
+            height: 164px;
+            width: 50%;
+        }
+        .auto-style5 {
+            width: 178px;
+        }
+        .body
+        {
+            background-image:url('img/fon2.jpg');
+           /* background-repeat:no-repeat;
+            background-attachment:fixed;
+               */
+            -moz-background-size: 100%; /* Firefox 3.6+ */
+            -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+            -o-background-size: 100%; /* Opera 9.6+ */
+            background-size: 100%; /* Современные браузеры */
+        }
+        .auto-style6 {
+            width: 100%;
+            height: 106px;
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <table class="auto-style1">
+                <tr>
+                    <td class="auto-style3">
+                        <asp:Image ID="Image1" runat="server" Height="174px" Width="341px" src="img/logo.jpg"/>
+                    </td>
+                    <td class="auto-style4"><H1 align ="center">АГЕНТСТВО НЕДВИЖИМОСТИ</H1></td>
+                    <td class="auto-style3">
+                        <table class="auto-style6">
+                            <tr>
+                                <td class="auto-style5">
+                                    <asp:Label ID="LabelLog" runat="server" Text="Логин"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="TextBoxLogin" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style5">
+                                    <asp:Label ID="LabelPass" runat="server" Text="Пароль"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="TextBoxPass" runat="server" TextMode="Password"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style5">
+                                    <asp:Button ID="ButtonEntry" runat="server" Text="Вход" OnClick="ButtonEntry_Click" />
+                                </td>
+                                <td>
+                                    <asp:Button ID="ButtonExit" runat="server" OnClick="ButtonExit_Click" Text="Выход" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style5">
+                                    <asp:Button ID="ButtonLK" runat="server" OnClick="ButtonLK_Click" Text="Личный кабинет" />
+                                </td>
+                                <td>
+                                    <asp:Button ID="ButtonReg" runat="server" OnClick="ButtonReg_Click" Text="Регистрация" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style5">
+                                    <asp:Button ID="Button1" runat="server" Text="Вход для сотрудников" OnClick="ButtonEntrySotrydnic_Click"/>
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2" style="vertical-align: top">
+                        <table class="auto-style1">
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Главная страница</asp:LinkButton>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">Новости</asp:LinkButton>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">Каталог</asp:LinkButton>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:LinkButton ID="LinkButtonBucket" runat="server" OnClick="LinkButton4_Click" BorderColor="Silver" ForeColor="#666666" Width="100%">Корзина</asp:LinkButton>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="auto-style2" colspan="2" style="vertical-align: top">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            <p>
+                                Привет</p>
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="catalog.aspx.cs" Inherits="ASOIU_Test1.catalog" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <table class="auto-style7">
+        <tr>
+            <td>
+                <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="ID" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1">
+                    <AlternatingRowStyle BackColor="White" />
+                    <Columns>
+                        <asp:CommandField ShowSelectButton="True" />
+                        <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                        <asp:BoundField DataField="Цена" HeaderText="Цена" SortExpression="Цена" />
+                        <asp:BoundField DataField="Площадь" HeaderText="Площадь" SortExpression="Площадь" />
+                        <asp:BoundField DataField="Этаж" HeaderText="Этаж" SortExpression="Этаж" />
+                        <asp:BoundField DataField="Адрес" HeaderText="Адрес" SortExpression="Адрес" />
+                        <asp:BoundField DataField="Картинки" HeaderText="Картинки" SortExpression="Картинки" Visible="False" />
+                        <asp:BoundField DataField="Застройщик" HeaderText="Застройщик" SortExpression="Застройщик" />
+                        <asp:ImageField DataImageUrlField="Картинки">
+                        </asp:ImageField>
+                    </Columns>
+                    <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                    <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                    <SortedAscendingCellStyle BackColor="#FDF5AC" />
+                    <SortedAscendingHeaderStyle BackColor="#4D0000" />
+                    <SortedDescendingCellStyle BackColor="#FCF6C0" />
+                    <SortedDescendingHeaderStyle BackColor="#820000" />
+                </asp:GridView>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ASOIU_4lr_1ConnectionString %>" SelectCommand="SELECT [ID], [Цена], [Площадь], [Этаж], [Адрес], [Картинки], [Застройщик] FROM [Апартаменты]"></asp:SqlDataSource>
+
+
+
+
+
+
+                <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="ID" DataSourceID="SqlDataSource2" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" Visible="False">
+                    <AlternatingRowStyle BackColor="White" />
+                    <Columns>
+                        <asp:CommandField ShowSelectButton="True" />
+                        <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                        <asp:BoundField DataField="Название" HeaderText="Название" SortExpression="Название" />
+                        <asp:BoundField DataField="Описание" HeaderText="Описание" SortExpression="Описание" />
+                        <asp:BoundField DataField="Дата_создания" HeaderText="Дата_создания" SortExpression="Дата_создания" />
+                        <asp:BoundField DataField="Логотип" HeaderText="Логотип" SortExpression="Логотип" Visible="False" />
+                        <asp:ImageField DataImageUrlField="Логотип">
+                        </asp:ImageField>
+                    </Columns>
+                    <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                    <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                    <SortedAscendingCellStyle BackColor="#FDF5AC" />
+                    <SortedAscendingHeaderStyle BackColor="#4D0000" />
+                    <SortedDescendingCellStyle BackColor="#FCF6C0" />
+                    <SortedDescendingHeaderStyle BackColor="#820000" />
+                </asp:GridView>
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ASOIU_4lr_1ConnectionString %>" SelectCommand="SELECT [ID], [Название], [Описание] FROM [Застройщик] "></asp:SqlDataSource>
+                                <br />                
+            </td>
+            <td>
+
+
+
+            
+            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ASOIU_4lr_1ConnectionString %>" OnSelecting="SqlDataSource2_Selecting" SelectCommand="SELECT [ID], [Цена], [Площадь], [Этаж], [Адрес], [Картинки], [Застройщик] FROM [Апартаменты] WHERE ([Застройщик] = @Застройщик)">
+                    <SelectParameters>
+                        <asp:SessionParameter DefaultValue="1" Name="Застройщик" SessionField="Manuf" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            
+            
+            
+            
+            
+            </td>
+        </tr>
+    </table>
+</asp:Content>
